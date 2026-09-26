@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = ["crates/*", "bin/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Riju Mondal <rijum8906@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/rijum8906/rde-facelock"
+
+# Global dependencies to keep versions unified across crates
+[workspace.dependencies]
+thiserror = "2.0"
+anyhow = "1.0"
+tokio = { version = "1.40", features = ["full"] }
+tracing = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+zeroize = { version = "1.8", features = ["alloc", "zeroize_derive"] }
+zbus = "4.4"
