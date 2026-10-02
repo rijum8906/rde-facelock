@@ -16,6 +16,12 @@ pub enum FaceLockError {
     /// An I/O operation failed.
     #[error("Io error: {0}")]
     Io(#[from] std::io::Error),
+
+    /// A startup error occurred.
+    ///
+    /// This error is returned when the application fails to start up properly.
+    #[error("Startup error: {0}")]
+    Startup(String),
 }
 
 /// Convenience alias for `Result<T, FaceLockError>`.

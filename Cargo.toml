@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/*", "bin/*"]
+members = ["crates/facelock-common", "bin/facelock-daemon"]
 
 [workspace.package]
 version = "0.1.0"
@@ -11,10 +11,13 @@ repository = "https://github.com/rijum8906/rde-facelock"
 
 # Global dependencies to keep versions unified across crates
 [workspace.dependencies]
+# Internal
+facelock-common = { path = "crates/facelock-common" }
+
 thiserror = "2.0"
 anyhow = "1.0"
 tokio = { version = "1.40", features = ["full"] }
 tracing = "0.1"
 serde = { version = "1.0", features = ["derive"] }
 zeroize = { version = "1.8", features = ["alloc", "zeroize_derive"] }
-zbus = "4.4"
+zbus = "5.19"

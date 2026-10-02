@@ -4,6 +4,13 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-repository.workspace = true
+repository = "https://github.com/rijum8906/rde-facelock/bin/facelock-daemon"
+
+[[bin]]
+name = "rde-facelock-daemon"
+path = "src/main.rs"
 
 [dependencies]
+facelock-common.workspace = true
+zbus.workspace = true
+tokio.workspace = true
