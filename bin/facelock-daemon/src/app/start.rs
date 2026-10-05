@@ -10,8 +10,12 @@
 //! # Errors:
 //! - [`FaceLockError::Startup`] if the application could not be started.
 
-use crate::app::{App, AppState};
+use crate::{
+    app::{App, AppState},
+    dbus::FaceLockDBusInterface,
+};
 use facelock_common::error::FaceLockError;
+use tokio::signal;
 
 impl App {
     /// Starts the application.
@@ -21,8 +25,28 @@ impl App {
     pub async fn start(&mut self) -> Result<(), FaceLockError> {
         self.state = AppState::Running;
         // TODO: Logic to start the application
-        Err(FaceLockError::Startup(
-            "Application startup failed".to_string(),
-        ))
+        let interface = FaceLockDBusInterface::new();
+        // 1. Establish DBus Session Connection
+        tracing::info!("Establishing D-Bus session connection...");
+        let conn = zbus::connection::Builder::session()?
+            .name("org.rde.FaceLock")?
+            .serve_at("/org/rde/FaceLock", interface)?
+            .build()
+            .await
+            .map_err(FaceLockError::DBus)?;
+
+        tracing::debug!("D-Bus interface registered at /org/rde/FaceLock");
+
+        conn.request_name("org.rde.Brightness").await?;
+        tracing::info!("Brightness D-Bus service started successfully");
+
+        // Wait for Ctrl+C to exit
+        tracing::info!("Waiting for Ctrl+C signal to shutdown...");
+        signal::ctrl_c().await?;
+
+        tracing::info!("Ctrl+C signal received. Shutting down Brightness Application...");
+        self.stop().await;
+
+        Ok(())
     }
 }

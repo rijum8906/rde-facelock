@@ -5,7 +5,7 @@
 use crate::app::{App, AppState};
 
 impl App {
-    pub fn stop(&mut self) {
+    pub async fn stop(&mut self) {
         self.state = AppState::Stopping;
 
         // TODO: Logic to stop the application

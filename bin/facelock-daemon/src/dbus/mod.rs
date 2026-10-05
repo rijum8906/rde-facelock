@@ -5,11 +5,11 @@
 /// This struct represents the FaceLock DBus interface.
 ///
 /// Contains all the states and fields required to run the DBus interface.
-pub struct FaceLockInterface {
+pub struct FaceLockDBusInterface {
     version: String,
 }
 
-impl FaceLockInterface {
+impl FaceLockDBusInterface {
     pub fn new() -> Self {
         let version = env!("CARGO_PKG_VERSION").to_string();
         Self { version }
@@ -17,7 +17,7 @@ impl FaceLockInterface {
 }
 
 #[zbus::interface(name = "org.rde.FaceLock")]
-impl FaceLockInterface {
+impl FaceLockDBusInterface {
     /// Returns the version of the FaceLock service.
     #[zbus(property)]
     pub fn version(&self) -> &str {
