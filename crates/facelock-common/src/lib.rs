@@ -3,6 +3,7 @@
 //! This crate is the bottom of the dependency graph and must not include any other facelock crates
 //!
 //! - [`error`]  — the workspace-wide [`error::FaceLockError`] and [`error::Result`] alias
+//! - [`logger`] - the all in one logger for this FaceLock peoject
 //!
 //! # Design Constraints
 //!
@@ -19,3 +20,4 @@
 #![warn(clippy::all)]
 
 pub mod error;
+pub mod logger;

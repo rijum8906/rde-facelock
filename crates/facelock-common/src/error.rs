@@ -22,6 +22,12 @@ pub enum FaceLockError {
     /// This error is returned when the application fails to start up properly.
     #[error("Startup error: {0}")]
     Startup(String),
+
+    /// When DBus error occured
+    ///
+    /// Used when there is issue with DBus connection
+    #[error("DBus error: {0}")]
+    DBus(#[from] zbus::Error),
 }
 
 /// Convenience alias for `Result<T, FaceLockError>`.

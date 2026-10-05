@@ -7,4 +7,12 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+chrono = "0.4.45"
 thiserror.workspace = true
+tracing.workspace = true
+tracing-appender.workspace = true
+tracing-subscriber.workspace = true
+zbus.workspace = true
+
+[dev-dependencies]
+tempfile = "3.27.0"
