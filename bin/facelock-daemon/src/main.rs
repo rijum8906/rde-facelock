@@ -1,5 +1,5 @@
 use facelock_common::error::Result;
-use facelock_daemon::app::App;
+use rde_facelockd::app::App;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<()> {

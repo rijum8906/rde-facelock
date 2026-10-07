@@ -20,6 +20,12 @@ impl FaceLockDBusInterface {
     }
 }
 
+impl Default for FaceLockDBusInterface {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[zbus::interface(name = "org.rde.FaceLock")]
 impl FaceLockDBusInterface {
     /// Returns the version of the FaceLock Daemon service.

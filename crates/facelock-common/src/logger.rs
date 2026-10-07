@@ -1,6 +1,8 @@
 //! Unified Logger System
 //!
-//! Detailed Description
+//! This module provides a unified logging system for the FaceLock service,
+//! supporting both console and file logging with configurable log levels.
+//! It leverages the `tracing` ecosystem to provide structured logging, colored output, and runtime log level changes.
 
 use std::{
     path::{Path, PathBuf},

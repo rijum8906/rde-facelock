@@ -1,5 +1,5 @@
 [package]
-name = "facelock-daemon"
+name = "rde-facelockd"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
