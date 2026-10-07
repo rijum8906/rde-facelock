@@ -1,0 +1,18 @@
+[Unit]
+Description=RDE FaceLock Authentication Daemon
+After=dbus.service
+Requires=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.rde.FaceLock
+ExecStart=/usr/bin/rde-facelock-daemon
+
+User=rde
+Group=rde
+
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
