@@ -43,8 +43,7 @@ impl App {
         let face_lock_manager_dbus_interface = FaceLockManagerDBusInterface::new();
 
         // 1. Establish DBus Session Connection
-        // FIXME: Use system connection instead of session connection
-        tracing::info!("Establishing D-Bus session connection...");
+        tracing::info!("Establishing D-Bus system connection...");
         let conn = zbus::connection::Builder::system()?
             .name("org.rde.FaceLock")?
             .serve_at("/org/rde/FaceLock", face_lock_dbus_interface)?
