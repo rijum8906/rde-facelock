@@ -5,6 +5,7 @@
 //! - [`error`]  — the workspace-wide [`error::FaceLockError`] and [`error::Result`] alias
 //! - [`logger`] - the all in one logger for this FaceLock peoject
 //! - [`path`]   - the path construction and config loading for this FaceLock project
+//! - [`model`]  — the in-memory representation of a face model, including its embedding and metadata
 //!
 //! # Design Constraints
 //!
@@ -22,4 +23,5 @@
 
 pub mod error;
 pub mod logger;
+pub mod model;
 pub mod path;
