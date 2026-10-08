@@ -16,6 +16,17 @@ pub enum DeviceId {
     ByPath(String),
 }
 
+impl DeviceId {
+    /// Convert the device ID to a path string.
+    pub fn to_path(&self) -> String {
+        match self {
+            DeviceId::Index(n) => format!("/dev/video{}", n),
+            DeviceId::ById(id) => format!("/dev/v4l/by-id/{}", id),
+            DeviceId::ByPath(path) => format!("/dev/v4l/by-path/{}", path),
+        }
+    }
+}
+
 /// Information about a camera device, including its supported formats.
 #[derive(Debug, Clone)]
 pub struct CameraInfo {
@@ -39,6 +50,19 @@ pub enum PixelFormat {
     Gray,
     // TODO: store is as raw [u8, 4] and implement Display to show the FOURCC string
     Other(u32), // raw FOURCC
+}
+
+impl From<v4l::FourCC> for PixelFormat {
+    fn from(fourcc: v4l::FourCC) -> Self {
+        match fourcc.str().unwrap_or_default() {
+            "YUYV" => PixelFormat::Yuyv,
+            "MJPG" => PixelFormat::Mjpeg,
+            "NV12" => PixelFormat::Nv12,
+            "RGB3" => PixelFormat::Rgb24,
+            "GREY" => PixelFormat::Gray,
+            _ => Self::Other(fourcc.into()),
+        }
+    }
 }
 
 /// Convert a v4l2 format description to our PixelFormat enum.
@@ -84,4 +108,15 @@ pub struct Frame {
     pub resolution: Resolution,
     pub sequence: u64,
     pub timestamp: Duration, // since stream start
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_device_id_to_path() {
+        let id_index = DeviceId::Index(0);
+        assert_eq!(id_index.to_path(), "/dev/video0");
+    }
 }

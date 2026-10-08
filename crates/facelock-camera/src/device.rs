@@ -56,7 +56,7 @@ fn probe(path: &std::path::Path) -> Result<CameraInfo, CameraError> {
     Ok(CameraInfo {
         id: DeviceId::Index(index_from_path(path)?),
         name: caps.card,
-        vendor: None, // v4l doesn't expose vendor; use udev if needed
+        vendor: None, // NOTE: v4l doesn't expose vendor; use udev if needed
         formats,
     })
 }
