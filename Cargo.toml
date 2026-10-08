@@ -1,6 +1,10 @@
 [workspace]
 resolver = "2"
-members = ["crates/facelock-common", "bin/facelock-daemon", "crates/facelock-camera"]
+members = [
+  "crates/facelock-core",
+  "bin/facelock-daemon",
+  "crates/facelock-camera",
+]
 
 [workspace.package]
 version = "0.1.0"
@@ -12,7 +16,7 @@ repository = "https://github.com/rijum8906/rde-facelock"
 # Global dependencies to keep versions unified across crates
 [workspace.dependencies]
 # Internal
-facelock-common = { path = "crates/facelock-common" }
+facelock-core = { path = "crates/facelock-core" }
 
 thiserror = "2.0"
 tokio = { version = "1.40", features = ["full"] }

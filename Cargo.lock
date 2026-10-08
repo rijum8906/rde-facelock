@@ -387,7 +387,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "facelock-common"
+name = "facelock-core"
 version = "0.1.0"
 dependencies = [
  "chrono",
@@ -808,7 +808,7 @@ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
 name = "rde-facelockd"
 version = "0.1.0"
 dependencies = [
- "facelock-common",
+ "facelock-core",
  "tokio",
  "tracing",
  "zbus",

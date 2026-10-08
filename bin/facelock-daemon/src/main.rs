@@ -1,4 +1,4 @@
-use facelock_common::error::Result;
+use facelock_core::error::Result;
 use rde_facelockd::app::App;
 
 #[tokio::main(flavor = "current_thread")]

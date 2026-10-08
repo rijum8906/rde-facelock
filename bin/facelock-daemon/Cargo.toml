@@ -7,7 +7,7 @@ license.workspace = true
 repository = "https://github.com/rijum8906/rde-facelock/bin/facelock-daemon"
 
 [dependencies]
-facelock-common.workspace = true
+facelock-core.workspace = true
 zbus.workspace = true
 tokio.workspace = true
 tracing.workspace = true

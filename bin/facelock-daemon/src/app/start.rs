@@ -19,7 +19,7 @@ use crate::{
         enroll::FaceLockEnrollDBusInterface, manager::FaceLockManagerDBusInterface,
     },
 };
-use facelock_common::error::FaceLockError;
+use facelock_core::error::FaceLockError;
 use tokio::{signal, sync::Mutex};
 
 impl App {

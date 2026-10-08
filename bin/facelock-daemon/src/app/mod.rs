@@ -13,7 +13,7 @@
 
 use std::sync::Arc;
 
-use facelock_common::{
+use facelock_core::{
     error::Result,
     logger::{LogLevel, Logger},
 };
