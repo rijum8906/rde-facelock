@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/facelock-common", "bin/facelock-daemon"]
+members = ["crates/facelock-common", "bin/facelock-daemon", "crates/facelock-camera"]
 
 [workspace.package]
 version = "0.1.0"

@@ -1,0 +1,12 @@
+[package]
+name = "facelock-camera"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+tracing.workspace = true
+thiserror.workspace = true
+v4l = "0.14.0"
