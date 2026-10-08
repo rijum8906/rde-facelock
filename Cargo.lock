@@ -381,6 +381,7 @@ dependencies = [
 name = "facelock-camera"
 version = "0.1.0"
 dependencies = [
+ "facelock-core",
  "thiserror",
  "tracing",
  "v4l",

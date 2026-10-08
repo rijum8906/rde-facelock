@@ -2,6 +2,8 @@
 
 use std::time::Duration;
 
+use facelock_core::path::{V4L_BY_ID_DIR, V4L_BY_PATH_DIR};
+
 /// Stable-ish identifier for a camera on the system.
 ///
 /// Prefer `by_id` over `index` when persisting a choice, since `/dev/videoN`
@@ -21,8 +23,8 @@ impl DeviceId {
     pub fn to_path(&self) -> String {
         match self {
             DeviceId::Index(n) => format!("/dev/video{}", n),
-            DeviceId::ById(id) => format!("/dev/v4l/by-id/{}", id),
-            DeviceId::ByPath(path) => format!("/dev/v4l/by-path/{}", path),
+            DeviceId::ById(id) => format!("{}/{}", V4L_BY_ID_DIR, id),
+            DeviceId::ByPath(path) => format!("{}/{}", V4L_BY_PATH_DIR, path),
         }
     }
 }
